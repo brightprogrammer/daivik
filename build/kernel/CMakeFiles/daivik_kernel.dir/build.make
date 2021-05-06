@@ -73,15 +73,15 @@ kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o: kernel/CMakeFiles/daivi
 kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o: ../kernel/source/kernel.cxx
 kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o: kernel/CMakeFiles/daivik_kernel.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brightprogrammer/Projects/daivik/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o"
-	cd /home/brightprogrammer/Projects/daivik/build/kernel && /bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o -MF CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o.d -o CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o -c /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx
+	cd /home/brightprogrammer/Projects/daivik/build/kernel && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o -MF CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o.d -o CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o -c /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx
 
 kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/daivik_kernel.dir/source/kernel.cxx.i"
-	cd /home/brightprogrammer/Projects/daivik/build/kernel && /bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx > CMakeFiles/daivik_kernel.dir/source/kernel.cxx.i
+	cd /home/brightprogrammer/Projects/daivik/build/kernel && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx > CMakeFiles/daivik_kernel.dir/source/kernel.cxx.i
 
 kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/daivik_kernel.dir/source/kernel.cxx.s"
-	cd /home/brightprogrammer/Projects/daivik/build/kernel && /bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx -o CMakeFiles/daivik_kernel.dir/source/kernel.cxx.s
+	cd /home/brightprogrammer/Projects/daivik/build/kernel && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx -o CMakeFiles/daivik_kernel.dir/source/kernel.cxx.s
 
 # Object files for target daivik_kernel
 daivik_kernel_OBJECTS = \
