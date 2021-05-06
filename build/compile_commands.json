@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/brightprogrammer/Projects/daivik/build/kernel",
-  "command": "/bin/g++  -I/home/brightprogrammer/Projects/daivik/kernel/include -g -Wall -Wextra -O2 -ffreestanding -fno-stack-protector -fno-pic -fpie -mgeneral-regs-only -mno-red-zone -o CMakeFiles/daivik.dir/source/kernel.cxx.o -c /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx",
-  "file": "/home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx"
-}
-]
