@@ -65,6 +65,39 @@ CMAKE_BINARY_DIR = /home/brightprogrammer/Projects/daivik/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -84,6 +117,18 @@ edit_cache:
 # Special rule for the target edit_cache
 edit_cache/fast: edit_cache
 .PHONY : edit_cache/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,25 +162,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-kernel/CMakeFiles/daivik_kernel.dir/rule:
-	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kernel/CMakeFiles/daivik_kernel.dir/rule
-.PHONY : kernel/CMakeFiles/daivik_kernel.dir/rule
+kernel/CMakeFiles/daivik.dir/rule:
+	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kernel/CMakeFiles/daivik.dir/rule
+.PHONY : kernel/CMakeFiles/daivik.dir/rule
 
 # Convenience name for target.
-daivik_kernel: kernel/CMakeFiles/daivik_kernel.dir/rule
-.PHONY : daivik_kernel
+daivik: kernel/CMakeFiles/daivik.dir/rule
+.PHONY : daivik
 
 # fast build rule for target.
-daivik_kernel/fast:
-	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik_kernel.dir/build.make kernel/CMakeFiles/daivik_kernel.dir/build
-.PHONY : daivik_kernel/fast
+daivik/fast:
+	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik.dir/build.make kernel/CMakeFiles/daivik.dir/build
+.PHONY : daivik/fast
 
 source/kernel.o: source/kernel.cxx.o
 .PHONY : source/kernel.o
 
 # target to build an object file
 source/kernel.cxx.o:
-	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik_kernel.dir/build.make kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o
+	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik.dir/build.make kernel/CMakeFiles/daivik.dir/source/kernel.cxx.o
 .PHONY : source/kernel.cxx.o
 
 source/kernel.i: source/kernel.cxx.i
@@ -143,7 +188,7 @@ source/kernel.i: source/kernel.cxx.i
 
 # target to preprocess a source file
 source/kernel.cxx.i:
-	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik_kernel.dir/build.make kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.i
+	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik.dir/build.make kernel/CMakeFiles/daivik.dir/source/kernel.cxx.i
 .PHONY : source/kernel.cxx.i
 
 source/kernel.s: source/kernel.cxx.s
@@ -151,7 +196,7 @@ source/kernel.s: source/kernel.cxx.s
 
 # target to generate assembly for a file
 source/kernel.cxx.s:
-	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik_kernel.dir/build.make kernel/CMakeFiles/daivik_kernel.dir/source/kernel.cxx.s
+	cd /home/brightprogrammer/Projects/daivik/build && $(MAKE) $(MAKESILENT) -f kernel/CMakeFiles/daivik.dir/build.make kernel/CMakeFiles/daivik.dir/source/kernel.cxx.s
 .PHONY : source/kernel.cxx.s
 
 # Help Target
@@ -161,8 +206,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... daivik_kernel"
+	@echo "... daivik"
 	@echo "... source/kernel.o"
 	@echo "... source/kernel.i"
 	@echo "... source/kernel.s"

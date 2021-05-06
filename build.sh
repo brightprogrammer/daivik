@@ -1,8 +1,13 @@
+mkdir -pv build
 cd build
 rm CMakeCache.txt
 cmake ..
 make -j2
+make install
 cd ..
+
+# remove cache daivik.hdd
+rm daivik.hdd
 
 # Create an empty zeroed out 64MiB daivik file.
 dd if=/dev/zero bs=1M count=0 seek=64 of=daivik.hdd
@@ -29,11 +34,14 @@ sudo mkfs.fat -F 32 ${USED_LOOPBACK}p1
 # Mount the partition itself.
 mkdir -p bootdisk
 sudo mount ${USED_LOOPBACK}p1 bootdisk
- 
-# Copy the relevant files over.
-sudo mkdir -p bootdisk/EFI/BOOT
-sudo cp -v build/daivik.elf limine.cfg limine/bin/limine.sys bootdisk/
-sudo cp -v limine/bin/BOOTX64.EFI bootdisk/EFI/BOOT/
+
+# copy in sysroot/boot
+cp -v build/kernel/daivik sysroot/boot/daivik.elf
+cp -v limine/bin/BOOTX64.EFI sysroot/boot/EFI/BOOT/
+cp -v limine.cfg limine/bin/limine.sys sysroot/boot/
+
+# Copy the relevant files over
+sudo cp -v sysroot/* bootdisk/ -r
  
 # Sync system cache and unmount partition and loopback device.
 sync

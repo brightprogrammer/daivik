@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdaivik_kernel.a CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o
-/usr/bin/ranlib libdaivik_kernel.a

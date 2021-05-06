@@ -119,5 +119,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "kernel/CMakeFiles/daivik_kernel.dir/DependInfo.cmake"
+  "kernel/CMakeFiles/daivik.dir/DependInfo.cmake"
   )
