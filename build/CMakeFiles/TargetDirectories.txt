@@ -1,0 +1,5 @@
+/home/brightprogrammer/Projects/daivik/build/CMakeFiles/rebuild_cache.dir
+/home/brightprogrammer/Projects/daivik/build/CMakeFiles/edit_cache.dir
+/home/brightprogrammer/Projects/daivik/build/kernel/CMakeFiles/rebuild_cache.dir
+/home/brightprogrammer/Projects/daivik/build/kernel/CMakeFiles/edit_cache.dir
+/home/brightprogrammer/Projects/daivik/build/kernel/CMakeFiles/daivik_kernel.dir

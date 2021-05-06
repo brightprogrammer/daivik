@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/brightprogrammer/Projects/daivik/build/kernel",
+  "command": "/bin/g++  -I/home/brightprogrammer/Projects/daivik/kernel/include -g -Wall -Wextra -O2 -Tlinker.ld -o CMakeFiles/daivik_kernel.dir/source/kernel.cxx.o -c /home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx",
+  "file": "/home/brightprogrammer/Projects/daivik/kernel/source/kernel.cxx"
+}
+]
