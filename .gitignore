@@ -1,4 +1,4 @@
 build/
-daivik.hdd
-daivik.hdd.lock
-bochsrc
+./daivik.hdd
+./daivik.hdd.lock
+./bochsrc
