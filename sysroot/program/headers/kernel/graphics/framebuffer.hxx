@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <cstddef>
+#include <kernel/memory/manager.hxx>
 
 // kernel namespace
 namespace kernel{
@@ -24,8 +25,8 @@ namespace kernel{
             uint8_t  green_mask_shift;
             uint8_t  blue_mask_size;
             uint8_t  blue_mask_shift;
-        };
-    
+        }; // framebuffer struct
+
     } // graphics namespace
 
 } // graphics namespace

@@ -1,0 +1,6 @@
+booting
+printing
+gdt
+idt
+paging
+pmm -> vmm -> scheduler -> ??? -> gpu driver

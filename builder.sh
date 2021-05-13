@@ -1,3 +1,10 @@
+# clear sysroot for fresh headers
+rm sysroot/program/headers/* -rvf
+rm sysroot/program/binaries/* -rvf
+rm sysroot/program/libraries/* -rvf
+rm sysroot/boot/* -rvf
+
+# build os
 mkdir -pv build
 cd build
 rm CMakeCache.txt

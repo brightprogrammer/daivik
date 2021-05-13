@@ -1,11 +1,9 @@
-#include "kernel/fonts/fonts.hxx"
-#include "kernel/terminal/terminal.hxx"
 #include <kernel/stivale2.h>
 #include <cstddef>
 #include <cstdint>
-#include <kernel/GlobalDescriptorTable.hxx>
-#include <kernel/terminal/write.hxx>
-#include <kernel/graphics/framebuffer.hxx>
+#include <kernel/global_descriptor_table.hxx>
+#include <kernel/console/terminal.hxx>
+#include <kernel/translations.hxx>
 
 // give this pointer to stivale
 // so that stivale can use this as stack
@@ -51,11 +49,12 @@ void halt(){
 
 // kernel entry point
 extern "C" void kernel_main(struct stivale2_struct *stivale_struct){
+    // framebuffer tag stores information about framebuffer
     struct stivale2_struct_tag_framebuffer* framebuffer_tag;
     
     // get pointer to framebuffer tag returned from a linked list of tags
     framebuffer_tag = reinterpret_cast<stivale2_struct_tag_framebuffer*>(stivale_get_tag(stivale_struct, STIVALE2_STRUCT_TAG_FRAMEBUFFER_ID));
-    
+
     // if tag is not present then halt system
     if(!framebuffer_tag){
         halt();
@@ -63,33 +62,23 @@ extern "C" void kernel_main(struct stivale2_struct *stivale_struct){
 
     // set framebuffer information
     static kernel::graphics::framebuffer framebuffer;
-    framebuffer.address = framebuffer_tag->framebuffer_addr;
-    framebuffer.bits_per_pixel = framebuffer_tag->framebuffer_bpp;
-    framebuffer.pitch = framebuffer_tag->framebuffer_pitch;
-    framebuffer.width = framebuffer_tag->framebuffer_width;
-    framebuffer.height = framebuffer_tag->framebuffer_height;
-    framebuffer.blue_mask_shift = framebuffer_tag->blue_mask_shift;
-    framebuffer.blue_mask_size = framebuffer_tag->blue_mask_size;
-    framebuffer.red_mask_shift = framebuffer_tag->red_mask_shift;
-    framebuffer.red_mask_size = framebuffer_tag->red_mask_size;
-    framebuffer.green_mask_shift = framebuffer_tag->green_mask_shift;
-    framebuffer.green_mask_size = framebuffer_tag->green_mask_size;
-    framebuffer.memory_model = framebuffer_tag->memory_model;
+    kernel::copy_framebuffer_from_stivale(framebuffer, framebuffer_tag);
     
-
     // create global descriptor table
-    GlobalDescriptorTable gdt;
+    global_descriptor_table gdt;
 
-    size_t x = FONT_WIDTH, y = 10;
-    for(size_t c = 0; c < 256; c++){
-        kernel::putchar(c, y, x, 0xdeadbeef, 0x00000000, framebuffer);
-        x += 8;
-        if(x >= framebuffer.width - FONT_WIDTH){
-            y+=16;
-            x=FONT_WIDTH;
-        }
-    }
+    // create a new terminal
+    kernel::console::terminal terminal(framebuffer);
+    terminal.write_string("hello user, I am daivik -.-");
+    terminal.next_line();
+    terminal.write_string("Hey, I just skipped the cursor to next line!");
+    terminal.skip_rows(5);
+    terminal.write_string("I skipped 5 lines this time");
+    terminal.next_line();
+    terminal.skip_cols(5);
+    terminal.write_string("This time, I skipped 5 spaces before printing this!");
+    terminal.move_up(3);
 
-    // at the end we have to halt anyway
+    // at the end we have to halt anyways
     halt();
 }
