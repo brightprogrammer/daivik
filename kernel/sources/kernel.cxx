@@ -1,8 +1,8 @@
 #include <kernel/stivale2.h>
 #include <cstddef>
 #include <cstdint>
-#include <kernel/global_descriptor_table.hxx>
-#include <kernel/console/terminal.hxx>
+#include <kernel/descriptors/global_descriptor_table.hxx>
+#include <kernel/console/display.hxx>
 #include <kernel/translations.hxx>
 
 // give this pointer to stivale
@@ -65,19 +65,12 @@ extern "C" void kernel_main(struct stivale2_struct *stivale_struct){
     kernel::copy_framebuffer_from_stivale(framebuffer, framebuffer_tag);
     
     // create global descriptor table
-    global_descriptor_table gdt;
+    kernel::global_descriptor_table gdt;
 
-    // create a new terminal
-    kernel::console::terminal terminal(framebuffer);
-    terminal.write_string("hello user, I am daivik -.-");
-    terminal.next_line();
-    terminal.write_string("Hey, I just skipped the cursor to next line!");
-    terminal.skip_rows(5);
-    terminal.write_string("I skipped 5 lines this time");
-    terminal.next_line();
-    terminal.skip_cols(5);
-    terminal.write_string("This time, I skipped 5 spaces before printing this!");
-    terminal.move_up(3);
+    // create a new display
+    kernel::console::display display(framebuffer);
+    display.write_string("hello user, I am daivik -.-");
+    display.next_line();
 
     // at the end we have to halt anyways
     halt();

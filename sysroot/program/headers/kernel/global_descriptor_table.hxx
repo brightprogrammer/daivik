@@ -1,3 +1,13 @@
+/**
+ * @file global_descriptor_table.cxx
+ * @author Siddharth Mishra (bshock665@gmail.com)
+ * @brief Global Descriptor Table class for implementing a GDT
+ * @date 2021-05-12
+ * 
+ * @copyright Copyright (c) 2021 Siddharth Mishra, All Rights Reserved.
+ * 
+ */
+
 #ifndef DAIVIK_KERNEL_GLOBAL_DESCRIPTOR_TABLE_HXX
 #define DAIVIK_KERNEL_GLOBAL_DESCRIPTOR_TABLE_HXX 1
 

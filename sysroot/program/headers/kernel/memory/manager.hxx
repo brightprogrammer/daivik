@@ -1,3 +1,13 @@
+/**
+ * @file manager.hxx
+ * @author Siddharth Mishra (bshock665@gmail.com)
+ * @brief Memory manager functions/classes/helpers for kernel
+ * @date 2021-05-13
+ * 
+ * @copyright Copyright (c) 2021 Siddharth Mishra, All Rights Reserved.
+ * 
+ */
+
 #ifndef DAIVIK_KERNEL_MEMORY_MANAGER_HXX
 #define DAIVIK_KERNEL_MEMORY_MANAGER_HXX 1
 
@@ -17,7 +27,7 @@ namespace kernel{
          * @param value to set to
          * @param n number of values to set
          */
-        inline void set(void* data, const uint8_t& value, const size_t& n);
+        void set(void* data, const uint8_t& value, const size_t& n);
 
         /**
          * @brief copies first n bytes from source to dest
@@ -26,12 +36,10 @@ namespace kernel{
          * @param source 
          * @param n 
          */
-        inline void copy(void* dest, const void* source, const size_t& n);
+        void copy(void* dest, const void* source, const size_t& n);
 
     }; // memory namespace
 
 } // kernel namespace
-
-#include "manager_impl.hxx"
 
 #endif//DAIVIK_KERNEL_MEMORY_MANAGER_HXX

@@ -1,5 +1,15 @@
-#ifndef DAIVIK_KERNEL_CONSOLE_TERMINAL_HXX
-#define DAIVIK_KERNEL_CONSOLE_TERMINAL_HXX 1
+/**
+ * @file display.hxx
+ * @author Siddharth Mishra (bshock665@gmail.com)
+ * @brief Console display manager. For printing and other things
+ * @date 2021-05-11
+ * 
+ * @copyright Copyright (c) 2021 Siddharth Mishra, All Rights Reserved.
+ * 
+ */
+
+#ifndef DAIVIK_KERNEL_CONSOLE_DISPLAY_HXX
+#define DAIVIK_KERNEL_CONSOLE_DISPLAY_HXX 1
 
 #include <cstddef>
 #include <cstdint>
@@ -12,24 +22,24 @@ namespace kernel{
     /// console namespace
     namespace console{
 
-        /// terminal buffer in a console
-        class terminal{
+        /// display buffer in a console
+        class display{
             graphics::framebuffer m_framebuffer;
             cursor m_cursor;
             font m_font;
 
         public:
             /**
-            * @brief Construct a new terminal object
+            * @brief Construct a new display object
             * 
             * @param framebuffer : screen buffer information
             */
-            inline terminal(const graphics::framebuffer& framebuffer) :
+            inline display(const graphics::framebuffer& framebuffer) :
                 m_framebuffer(framebuffer), 
                 m_cursor(cursor(framebuffer.width / __FONT_WIDTH__)){}
 
             /**
-            * @brief initialize terminal
+            * @brief initialize display
             * 
             * @param framebuffer : screen buffer information
             */
@@ -57,17 +67,17 @@ namespace kernel{
             void write_char(const char& c);
 
             /**
-            * @brief write a string on terminal
+            * @brief write a string on display
             * 
             * @param str : const char pointer 
             */
             void write_string(const char* str);
 
             /**
-            * @brief write to terminal from data -> data+size
+            * @brief write to display from data -> data+size
             * 
             * @param data : const char pointer
-            * @param n : number of bytes to write to terminal 
+            * @param n : number of bytes to write to display 
             */
             void write_string(const char* data, const size_t& n);
 
@@ -99,16 +109,16 @@ namespace kernel{
             void skip_cols(const size_t& n_cols);
 
             /**
-             * @brief move the content on terminal by n rows
+             * @brief move the content on display by n rows
              * 
              * @param n_rows : number of rows to shift up
              */
             void move_up(const size_t& n_rows);
 
-        }; // terminal class
+        }; // display class
 
     } // console namespace
 
 } // kernel namespace
 
-#endif//DAIVIK_KERNEL_CONSOLE_TERMINAL_HXX
+#endif//DAIVIK_KERNEL_CONSOLE_DISPLAY_HXX
